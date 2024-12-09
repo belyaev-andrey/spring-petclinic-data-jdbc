@@ -12,14 +12,17 @@ import java.util.Comparator;
 class VisitApiController {
 
     private final VisitService visitService;
+    private final VisitDtoMapper visitDtoMapper;
 
-    public VisitApiController(VisitService visitService) {
+    VisitApiController(VisitService visitService, VisitDtoMapper visitDtoMapper) {
         this.visitService = visitService;
+        this.visitDtoMapper = visitDtoMapper;
     }
 
     @PostMapping(value = "/pet/{petId}", consumes = "application/json", produces = "application/json")
-	Visit scheduleVisit(@PathVariable int petId, @Valid @RequestBody Visit visit) {
-		return visitService.saveVisit(petId, visit);
+	VisitDto scheduleVisit(@PathVariable int petId, @Valid @RequestBody Visit visit) {
+        Visit newVisit = visitService.saveVisit(petId, visit);
+        return visitDtoMapper.mapVisit(newVisit);
 	}
 
 }
@@ -29,7 +32,7 @@ class VisitService {
 
     private final VisitRepository visitRepository;
 
-    public VisitService(VisitRepository visitRepository) {
+    VisitService(VisitRepository visitRepository) {
         this.visitRepository = visitRepository;
     }
 
@@ -37,7 +40,7 @@ class VisitService {
     Visit saveVisit(int petId, Visit visit) {
         visit.setPetId(petId);
         visitRepository.save(visit);
-        Visit latestVisit = visitRepository.findByPetId(petId).stream().max(Comparator.comparing(Visit::getDate)).orElseThrow();
+        Visit latestVisit = visitRepository.findByPetId(petId).stream().max(Comparator.comparing(Visit::getId)).orElseThrow();
         return latestVisit;
     }
 
