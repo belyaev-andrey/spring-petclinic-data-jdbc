@@ -15,7 +15,6 @@
  */
 package org.springframework.samples.petclinic.vet;
 
-import java.util.Collection;
 import java.util.List;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.dao.DataAccessException;
@@ -25,8 +24,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Repository class for <code>Vet</code> domain objects All method names are compliant with Spring Data naming
- * conventions so this interface can easily be extended for Spring Data See here:
- * <a href="https://docs.spring.io/spring-data/jpa/reference/repositories/query-methods-details.html#repositories.query-methods.query-creation">Query Creation</a>
+ * conventions so this interface can easily be extended for Spring Data See here: <a href=
+ * "https://docs.spring.io/spring-data/jpa/reference/repositories/query-methods-details.html#repositories.query-methods.query-creation">Query
+ * Creation</a>
  *
  * @author Ken Krebs
  * @author Juergen Hoeller
