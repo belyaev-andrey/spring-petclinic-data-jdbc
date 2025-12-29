@@ -23,7 +23,7 @@
 
         <!-- Web dependencies -->
         <webjars-locator.version>1.1.2</webjars-locator.version>
-        <webjars-bootstrap.version>3.3.6</webjars-bootstrap.version>
+        <webjars-bootstrap.version>3.4.1</webjars-bootstrap.version>
         <webjars-font-awesome.version>4.7.0</webjars-font-awesome.version>
         <webjars-jquery-ui.version>1.13.2</webjars-jquery-ui.version>
         <webjars-jquery.version>3.5.0</webjars-jquery.version>
