@@ -15,7 +15,6 @@
  */
 package org.springframework.samples.petclinic.vet;
 
-import java.util.Collection;
 import java.util.List;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.dao.DataAccessException;

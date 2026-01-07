@@ -16,10 +16,7 @@
 package org.springframework.samples.petclinic.owner;
 
 import java.text.ParseException;
-import java.util.Collection;
 import java.util.Locale;
-import java.util.stream.Collectors;
-
 import org.springframework.format.Formatter;
 import org.springframework.stereotype.Component;
 

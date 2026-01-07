@@ -21,7 +21,7 @@ import java.util.Collection;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.data.jdbc.DataJdbcTest;
+import org.springframework.boot.data.jdbc.test.autoconfigure.DataJdbcTest;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.samples.petclinic.owner.*;
 import org.springframework.samples.petclinic.vet.SpecialtyRef;
@@ -43,7 +43,7 @@ import org.springframework.transaction.annotation.Transactional;
  * execution.</li>
  * <li><strong>Dependency Injection</strong> of test fixture instances, meaning that we don't need to perform
  * application context lookups. See the use of {@link Autowired @Autowired} on the <code>{@link
- * ClinicServiceTests#clinicService clinicService}</code> instance variable, which uses autowiring <em>by type</em>.
+ * ClinicServiceTests clinicService}</code> instance variable, which uses autowiring <em>by type</em>.
  * <li><strong>Transaction management</strong>, meaning each test method is executed in its own transaction, which is
  * automatically rolled back by default. Thus, even if tests insert or otherwise change database state, there is no need
  * for a teardown or cleanup script.
@@ -191,10 +191,10 @@ public class ClinicServiceTests {
 	}
 
 	@Test
-	public void shouldFindVisitsByPetId() throws Exception {
+	public void shouldFindVisitsByPetId() {
 		Collection<Visit> visits = this.visits.findByPetId(7);
 		assertThat(visits.size()).isEqualTo(2);
-		Visit[] visitArr = visits.toArray(new Visit[visits.size()]);
+		Visit[] visitArr = visits.toArray(new Visit[0]);
 		assertThat(visitArr[0].getDate()).isNotNull();
 		assertThat(visitArr[0].getPetId()).isEqualTo(7);
 	}
