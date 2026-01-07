@@ -23,9 +23,8 @@ import org.springframework.stereotype.Component;
 /**
  * Instructs Spring MVC on how to parse and print elements of type 'PetType'. Starting from Spring 3.0, Formatters have
  * come as an improvement in comparison to legacy PropertyEditors. See the following links for more details: - The
- * Spring ref doc: <a href=
- * "https://docs.spring.io/spring-framework/reference/core/validation/format.html#format-Formatter-SPI">Formatter
- * SPI</a>
+ * Spring ref doc:
+ * <a href="https://docs.spring.io/spring-framework/reference/core/validation/format.html#format-Formatter-SPI">Formatter SPI</a>
  *
  * @author Mark Fisher
  * @author Juergen Hoeller
@@ -47,8 +46,11 @@ public class PetTypeFormatter implements Formatter<PetType> {
 
 	@Override
 	public PetType parse(String text, Locale locale) throws ParseException {
-		return this.pets.findPetTypes().stream().filter(t -> t.name().equals(text)).findFirst()
-				.orElseThrow(() -> new ParseException("type not found: " + text, 0));
+		return this.pets.findPetTypes()
+            .stream()
+            .filter(t -> t.name().equals(text))
+            .findFirst()
+            .orElseThrow(() -> new ParseException("type not found: " + text, 0));
 	}
 
 }
